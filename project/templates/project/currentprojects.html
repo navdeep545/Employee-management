@@ -1,0 +1,26 @@
+{% extends 'project/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-3">Current Projects</h1>
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <ul class="list-group">
+        {% for project in projects %}
+            <li class="list-group-item">
+                <a href="{% url 'viewproject' project.id %}" class="text-decoration-none">
+                    <h5 class="mb-1">{{ project.title }}</h5>
+                    {% if project.description %}
+                        <p class="mb-0">{{ project.description }}</p>
+                    {% endif %}
+                </a>
+            </li>
+        {% empty %}
+            <li class="list-group-item text-muted">No current projects available.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'project/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Completed Projects</h1>
+
+    <ul class="list-group">
+        {% for project in projects %}
+            <li class="list-group-item">
+                <a href="{% url 'viewproject' project.id %}" class="text-decoration-none">
+                    <h5 class="mb-1">{{ project.title }}</h5>
+                    <p class="mb-1">{{ project.description }}</p>
+                    <small class="text-muted">Completed on {{ project.datecompleted|date:'M j, Y H:i' }}</small>
+                </a>
+            </li>
+        {% empty %}
+            <li class="list-group-item text-muted">No completed projects found.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
