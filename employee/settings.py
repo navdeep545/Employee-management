@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-idprwus*9w#%4odn72topdo=s52-+#aybs_%nm+m2r0ewgc8(*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['employee_project.onrender.com']
 
 
 # Application definition
@@ -50,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware') 
 
 ROOT_URLCONF = 'employee.urls'
 
@@ -117,6 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 LOGIN_URL = '/login/'
 
 # Default primary key field type
